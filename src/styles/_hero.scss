@@ -1,0 +1,101 @@
+@use 'variaveis';
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; // Os itens serão distribuídos verticalmente
+    justify-content: space-between; // Distribui o espaço restante entre os elementos de cima para baixo
+    padding: 2vh 10vw; // Padding usando vh e vw para responsividade
+
+    &__container {
+        display: flex;
+        flex-direction: row; // Layout horizontal para desktop
+        justify-content: space-between;
+        align-items: center;
+        flex-grow: 1; // Permite que o container cresça para preencher o espaço vertical
+        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(../images/cena1.webp);
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        &__title {
+            margin: auto;
+            padding-top: 10vh; // Convertido 96px para 10vh
+            padding-right: 5vw; // Mantido em vw para ser responsivo
+            padding-left: 2vw;
+
+            @media (min-height: 900px) { // Para telas mais altas
+                padding-top: 15vh; // Aumenta o espaçamento no topo para telas mais altas
+                }
+
+            h1 {
+                margin-bottom: 3vh; // Convertido de 24px para 3vh
+            }
+
+            p {
+                margin-bottom: 1vh; // Convertido de 5px para 1vh
+                max-width: 30vw; // Mantém o valor em vw para texto longo
+
+                &.text--big{
+                    font-weight: bolder;
+                }
+
+                @media (max-width: 768px) {
+                    max-width: fit-content;
+                }
+
+                &.text {
+                    margin-bottom: 4vh; // Convertido de 36px para 4vh
+                    width: 100%;
+                }
+            }
+        }
+
+        &__image {
+            margin: 0 auto 5vh; // Convertido de 48px para 5vh
+            
+            @media (max-width: 768px) {
+                display: none;
+            }
+
+            img {
+                max-height: 80vh; // Máximo 80% da altura da viewport
+                max-width: 100%; // Não ultrapassa a largura total da tela
+                object-fit: contain; // A imagem se ajusta completamente ao contêiner sem cortar
+            }
+        }
+
+        &__watch {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 5vh; // Convertido de 48px para 5vh
+
+            @media (min-height: 900px) {
+                margin-top: 10vh; // Aumenta a distância dos botões em telas altas
+            }
+
+            @media (max-width: 768px) {
+                display: block;
+                margin: auto;
+            }
+
+            &__play {
+                display: flex;
+                flex-direction: column;
+                margin: 2vh 2vw 7vh; // Convertido margens e espaçamentos para unidades responsivas (20px 20px 72px)
+                width: 100%;
+                align-items: center;
+
+                @media (max-width: 768px) {
+                    margin: 2vh auto;
+                }
+                
+                img {
+                    width: 8vw;
+                    max-width: 100px; // Tamanho máximo para telas grandes
+                    min-width: 80px; // Tamanho mínimo para evitar que fique muito pequena
+                    height: auto; // Mantém a proporção
+                }                
+            }
+        }
+    }
+}
